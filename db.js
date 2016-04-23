@@ -1,4 +1,6 @@
 var Sequelize = require('sequelize');
+
+// if running on Heroku, env = "production", otherwise it will be "development"
 var env = process.env.NODE_ENV || 'development';
 
 var sequelize;
@@ -16,26 +18,13 @@ if (env === 'production') {
 
 /*
 subscription
-  id
-  email
-  subscribed
+  id email subscribed
 
 review
-  id
-  name
-  phone_number
-  message
+  id name phone_number message
 
 notice_board
-  id
-  title
-  message
-  date
-  province
-  city
-  longitude
-  latitude
-  image_address
+  id title message date province city longitude latitude image_address
 */
 
 var db = {};

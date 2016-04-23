@@ -1,3 +1,10 @@
+/*
+* This model represents a single entry on the Steakout notice_board
+* A single notice will contain the rough location of where the Steakout truck
+* will be that day, on what date, and the longitude/latitude location of the
+* truck so that we can create a pin on Google maps
+*/
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('notice', {
     title: {
