@@ -10,6 +10,7 @@ if (env === 'production') {
     dialect: 'postgresl',
   });
 } else {
+  //if we have db account, shoud we put the account in this line??
   sequelize = new Sequelize(undefined, undefined, undefined, {
     'dialect': 'sqlite',
     'storage': __dirname + '/data/dev-steakout-api.sqlite'
