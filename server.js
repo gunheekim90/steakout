@@ -9,11 +9,10 @@ var db = require('./db.js');
 var port = process.env.PORT || 5000;
 
 
-// code to connect React
+// code to connect React (used for the backoffice)
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
-
 app.use(express.static('./views'));
 
 app.use(bodyParser.json());
@@ -33,6 +32,7 @@ app.get('/culinary',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
+// shows all rows in the subscription table
 app.get('/backoffice/subscriptions', function(req, res) {
   db.subscription.findAll().then(function(subscriptions) {
     var subscriptionArray = [];
@@ -59,12 +59,14 @@ app.get('/backoffice/subscriptions', function(req, res) {
   });
 });
 
+// allows you to retrieve all subscriptions in JSON format
 app.get('/subscriptions', function(req, res) {
   db.subscription.findAll().then(function(subscriptions) {
     res.send(subscriptions);
   });
 });
 
+// allows you to create a new subscription (automatically sends a confirmation email)
 app.post("/subscriptions/new", function(req, res) {
   var body = _.pick(req.body, 'email');
   if (!_.isString(body.email) || body.email.trim().length === 0 || !_.contains(body.email, '@')) {
@@ -97,6 +99,7 @@ app.post("/subscriptions/new", function(req, res) {
   })
 });
 
+// allows you to delete a subscription by id 
 app.delete('/subscriptions/:id', function(req, res) {
   var subscriptionId = parseInt(req.params.id, 10);
   db.subscription.destroy({
