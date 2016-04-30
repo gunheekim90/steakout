@@ -33,15 +33,13 @@ app.get('/culinary',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
-app.get('/backoffice', function(req, res) {
+app.get('/backoffice/subscriptions', function(req, res) {
   db.subscription.findAll().then(function(subscriptions) {
     var subscriptionArray = [];
     console.log(Array.isArray(subscriptionArray));
     for (var subscription in subscriptions) {
       if (subscriptions.hasOwnProperty(subscription)) {
-        
         subscriptionArray.push(subscriptions[subscription].dataValues);
-
 
         // console.log('\t' + subscriptions[subscription].dataValues.id);
         // console.log('\t\t' + typeof(subscriptions[subscription].dataValues.id));
@@ -98,6 +96,25 @@ app.post("/subscriptions/new", function(req, res) {
     res.status(500).send();
   })
 });
+
+app.delete('/subscriptions/:id', function(req, res) {
+  var subscriptionId = parseInt(req.params.id, 10);
+  db.subscription.destroy({
+    where: {
+      id: subscriptionId
+    }
+  }).then(function(rowsDeleted) {
+    if (rowsDeleted === 0) {
+      res.status(404).json({
+        'error': 'no subscription with that id found'
+      });
+    } else {
+      res.status(204).send();
+    }
+  }).catch(function() {
+    res.status(500).send();
+  });
+})
 
 /* serves all the static files */
 app.get(/^(.+)$/, function(req, res){
