@@ -66,6 +66,20 @@ app.get('/subscriptions', function(req, res) {
   });
 });
 
+// allows you to retrieve subcription by id
+app.get('/subscriptions/:id', function(req, res) {
+  var subscriptionId = parseInt(req.params.id, 10);
+  db.subscription.findById(subscriptionId).then(function(subscription) {
+    if (!!subscription) {
+      res.json(subscription.toJSON());
+    } else {
+      res.status(404).send();
+    }
+  }, function(error) {
+    res.status(500).send();
+  });
+});
+
 // allows you to create a new subscription (automatically sends a confirmation email)
 app.post("/subscriptions/new", function(req, res) {
   var body = _.pick(req.body, 'email');
@@ -128,7 +142,7 @@ app.put('/subscriptions/:id', function(req, res) {
     attributes.email = body.email;
   }
 
-  if (body.hasOwnProperty('subscribed')) {
+  if (body.hasOwnProperty('subscribed') && _.isBoolean(body.subscribed)) {
     attributes.subscribed = body.subscribed;
   }
 
