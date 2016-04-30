@@ -99,7 +99,7 @@ app.post("/subscriptions/new", function(req, res) {
   })
 });
 
-// allows you to delete a subscription by id 
+// allows you to delete a subscription by id
 app.delete('/subscriptions/:id', function(req, res) {
   var subscriptionId = parseInt(req.params.id, 10);
   db.subscription.destroy({
@@ -119,10 +119,33 @@ app.delete('/subscriptions/:id', function(req, res) {
   });
 })
 
-/* serves all the static files */
-app.get(/^(.+)$/, function(req, res){
-   console.log('static file request : ' + req.params);
-   res.sendfile( __dirname + req.params[0]);
+app.put('/subscriptions/:id', function(req, res) {
+  var subscriptionId = parseInt(req.params.id, 10);
+  body = _.pick(req.body, 'email', 'subscribed');
+  var attributes = {};
+
+  if (body.hasOwnProperty('email')) {
+    attributes.email = body.email;
+  }
+
+  if (body.hasOwnProperty('subscribed')) {
+    attributes.subscribed = body.subscribed;
+  }
+
+  db.subscription.findById(subscriptionId).then(function(subscription) {
+    if (subscription) {
+      return subscription.update(attributes);
+    } else {
+      res.status(404).send();
+    }
+  }, function() {
+    res.status(500).send();
+  }).then(function(subscription) {
+    res.json(subscription.toJSON());
+  }, function(error) {
+    res.status(400).json(error);
+  });
+
 });
 
 
