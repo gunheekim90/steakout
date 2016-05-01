@@ -768,7 +768,7 @@
         </div>
     </div>
     <!-- Example Modal 4 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/steakouts3/assets/assets/img/creative/portfolio/bg-4.jpg')">
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true" style="background-image: url('./assets/img/creative/portfolio/bg-4.jpg')">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
