@@ -139,7 +139,7 @@ app.delete('/subscriptions/:id', function(req, res) {
   }).catch(function() {
     res.status(500).send();
   });
-})
+});
 
 app.put('/subscriptions/:id', function(req, res) {
   var subscriptionId = parseInt(req.params.id, 10);
@@ -246,6 +246,25 @@ app.get('/reviews', function(req, res) {
     console.log(where);
     res.send(reviews);
   }, function(error) {
+    res.status(500).send();
+  });
+});
+
+app.delete('/reviews/:id', function(req, res) {
+  var reviewId = parseInt(req.params.id, 10);
+  db.review.destroy({
+    where: {
+      id: reviewId
+    }
+  }).then(function(rowsDeleted) {
+    if (rowsDeleted === 0) {
+      res.status(404).json({
+        'error': 'no subscription with that id found'
+      });
+    } else {
+      res.status(204).send();
+    }
+  }).catch(function() {
     res.status(500).send();
   });
 });
