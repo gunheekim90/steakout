@@ -1,13 +1,14 @@
 var React = require('react');
 var db = require('../db.js');
 
-var HelloMessage = React.createClass({
+module.exports = React.createClass({
   getInitialState: function() {
     return {
       subscriptions: this.props.subscriptions
     };
   },
   render: function() {
+    var self = this;
     // console.log(this.props.subscriptions[1].data);
     var list_of_subscriptions = this.state.subscriptions.map(function(subscription){
       return (
@@ -84,26 +85,56 @@ var HelloMessage = React.createClass({
             </div>
           </nav>
 
+
           <h3>Subscriptions</h3>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Subscription Date</th>
-                <th>Last Updated</th>
-              </tr>
-            </thead>
-            <tbody>
-              {list_of_subscriptions}
-            </tbody>
-          </table>
+
+          <div className="container-fluid">
+            <div className="row-fluid">
+              <div className="form-group col-sm-4">
+                <label>Query by ID:</label>
+                <input type="text" className="form-control" id="usr"/>
+              </div>
+              <div className="form-group col-sm-4">
+                <label>Query by Email:</label>
+                <input type="text" className="form-control" id="usr"/>
+              </div>
+              <div className="form-group col-sm-4">
+                <label>Query by Status:</label>
+                <input type="text" className="form-control" id="usr"/>
+              </div>
+              <div className="form-group col-sm-12">
+                <button style={{display: 'block', width: '100%'}} type="button" className="btn btn-primary" onSelect={function() {alert("left")}}>Search for Subscriptions</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div className="container-fluid">
+            <div className="row-fluid">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Subscription Date</th>
+                    <th>Last Updated</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {list_of_subscriptions}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
 
         </body>
       </html>
     );
+  },
+  subscriptionSubmitClick: function(event) {
+    console.log('i was clicked');
   }
 });
-
-module.exports = HelloMessage;
