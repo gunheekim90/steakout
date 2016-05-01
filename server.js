@@ -61,8 +61,24 @@ app.get('/backoffice/subscriptions', function(req, res) {
 
 // allows you to retrieve all subscriptions in JSON format
 app.get('/subscriptions', function(req, res) {
-  db.subscription.findAll().then(function(subscriptions) {
+  var query = req.query;
+  var where = {};
+
+  if (query.hasOwnProperty('email') && query.email.trim().length > 0) {
+    where.email = query.email.trim();
+  }
+
+  if (query.hasOwnProperty('subscribed') && query.subscribed === 'true') {
+    where.subscribed = true;
+  } else if (query.hasOwnProperty('subscribed') && query.subscribed === 'false') {
+    where.subscribed = false;
+  }
+
+  db.subscription.findAll({where: where}).then(function(subscriptions) {
+    console.log(where);
     res.send(subscriptions);
+  }, function(error) {
+    res.status(500).send();
   });
 });
 
