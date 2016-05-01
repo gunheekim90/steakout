@@ -40,6 +40,8 @@ app.get('/culinary',function(req,res){
 
 
 
+
+
 app.get('/backoffice/subscriptions', function(req, res) {
   db.subscription.findAll().then(function(subscriptions) {
     var subscriptionArray = [];
@@ -268,6 +270,35 @@ app.delete('/reviews/:id', function(req, res) {
     res.status(500).send();
   });
 });
+
+// app.put('/reviews/:id', function(req, res) {
+//   var reviewId = parseInt(req.params.id, 10);
+//   body = _.pick(req.body, 'name', 'phone_number', 'message');
+//   var attributes = {};
+//
+//   if (body.hasOwnProperty('name') && _.isString(body.subscribed)) {
+//     attributes.email = body.email;
+//   }
+//
+//   if (body.hasOwnProperty('subscribed') && _.isBoolean(body.subscribed)) {
+//     attributes.subscribed = body.subscribed;
+//   }
+//
+//   db.subscription.findById(subscriptionId).then(function(subscription) {
+//     if (subscription) {
+//       return subscription.update(attributes);
+//     } else {
+//       res.status(404).send();
+//     }
+//   }, function() {
+//     res.status(500).send();
+//   }).then(function(subscription) {
+//     res.json(subscription.toJSON());
+//   }, function(error) {
+//     res.status(400).json(error);
+//   });
+//
+// });
 
 
 

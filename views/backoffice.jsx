@@ -8,7 +8,6 @@ module.exports = React.createClass({
     };
   },
   render: function() {
-    var self = this;
     // console.log(this.props.subscriptions[1].data);
     var list_of_subscriptions = this.state.subscriptions.map(function(subscription){
       return (
