@@ -158,6 +158,47 @@ app.put('/subscriptions/:id', function(req, res) {
 
 });
 
+app.post("/reviews/new", function(req, res) {
+  var body = _.pick(req.body, 'name', 'phone_number', 'message');
+  if (!_.isString(body.name) || body.name.trim().length === 0) {
+        res.status(400).json({"error": "The request body was not formatted correctly."});
+  }
+  if (!_.isString(body.phone_number) || body.phone_number.trim().length === 0) {
+        res.status(400).json({"error": "The request body was not formatted correctly."});
+  }
+  if (!_.isString(body.message) || body.message.trim().length === 0) {
+        res.status(400).json({"error": "The request body was not formatted correctly."});
+  }
+
+  body.name = body.name.trim().toLowerCase();
+  body.phone_number = body.phone_number.replace(/[^a-zA-Z0-9]/g, '').trim();
+  body.message = body.message.trim();
+
+  db.review.create(body).then(function(subscription) {
+    if (subscription) {
+      res.send(subscription.toJSON());
+    } else {
+      res.status(500).send();
+    }
+  }).catch(function(error) {
+    res.status(500).send();
+  })
+});
+
+app.get('/reviews/:id', function(req, res) {
+  var reviewId = parseInt(req.params.id, 10);
+  db.review.findById(reviewId).then(function(review) {
+    if (!!review) {
+      res.json(review.toJSON());
+    } else {
+      res.status(404).send();
+    }
+  }, function(error) {
+    res.status(500).send();
+  });
+});
+
+
 
 db.sequelize.sync({ force: false }).then(function() {
   app.listen(port, function() {
