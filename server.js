@@ -28,6 +28,18 @@ app.get('/culinary',function(req,res){
   res.sendFile(path.join(__dirname, 'culinary.html'));
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/backoffice/subscriptions', function(req, res) {
   db.subscription.findAll().then(function(subscriptions) {
     var subscriptionArray = [];
@@ -158,6 +170,22 @@ app.put('/subscriptions/:id', function(req, res) {
 
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.post("/reviews/new", function(req, res) {
   var body = _.pick(req.body, 'name', 'phone_number', 'message');
   if (!_.isString(body.name) || body.name.trim().length === 0) {
@@ -171,7 +199,7 @@ app.post("/reviews/new", function(req, res) {
   }
 
   body.name = body.name.trim().toLowerCase();
-  body.phone_number = body.phone_number.replace(/[^a-zA-Z0-9]/g, '').trim();
+  body.phone_number = body.phone_number.replace(/[^0-9]/g, '').trim();
   body.message = body.message.trim();
 
   db.review.create(body).then(function(subscription) {
@@ -197,6 +225,43 @@ app.get('/reviews/:id', function(req, res) {
     res.status(500).send();
   });
 });
+
+app.get('/reviews', function(req, res) {
+  var query = req.query;
+  var where = {};
+
+  if (query.hasOwnProperty('name') && query.name.trim().length > 0) {
+    where.name = query.name.trim();
+  }
+  if (query.hasOwnProperty('phone_number') && query.phone_number.replace(/[^0-9]/g, '').trim().length > 0) {
+    where.phone_number = query.phone_number.replace(/[^0-9]/g, '').trim();
+  }
+  if (query.hasOwnProperty('message') && query.message.trim().length > 0) {
+    where.message = {
+      $like: '%' + query.message.trim() + '%'
+    };
+  }
+
+  db.review.findAll({where: where}).then(function(reviews) {
+    console.log(where);
+    res.send(reviews);
+  }, function(error) {
+    res.status(500).send();
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
