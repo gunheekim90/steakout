@@ -6,7 +6,7 @@ var sendgrid = require('sendgrid')('SG.zTrdVVKmT6-iSk4LfU30mA.9jpUfQcn6acJlBSgpB
 var path = require("path");
 
 var db = require('./db.js');
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 80;
 
 
 app.set('views', __dirname + '/views');
@@ -27,18 +27,6 @@ app.get('/creative',function(req,res){
 app.get('/culinary',function(req,res){
   res.sendFile(path.join(__dirname, 'culinary.html'));
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -2,7 +2,6 @@ var Sequelize = require('sequelize');
 
 // if running on Heroku, env = "production", otherwise it will be "development"
 var env = process.env.NODE_ENV || 'development';
-
 var sequelize;
 
 if (env === 'production') {
@@ -10,9 +9,10 @@ if (env === 'production') {
     dialect: 'postgresl',
   });
 } else {
-  sequelize = new Sequelize(undefined, undefined, undefined, {
-    'dialect': 'sqlite',
-    'storage': __dirname + '/data/dev-steakout-api.sqlite'
+  sequelize = new Sequelize('steakout','steakout','qortkdgns', {
+    host :'steakout.crumgltvdqqx.ap-northeast-2.rds.amazonaws.com',
+    dialect : 'mysql',
+    port : 3306
   });
 }
 
