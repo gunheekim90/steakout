@@ -21,7 +21,132 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <link rel="stylesheet" type="text/css" href="./truck_main.css">
+  <style type='text/css'>
+    .imgContainer{
+      display: inline-block;
+      margin: 0px 20px 0px 20px;
+      opacity: 0.4;
+      filter: alpha(opacity=40); /* For IE8 and earlier */
+    }
+
+    .imgContainer:hover {
+      opacity: 1.0;
+      filter: alpha(opacity=100); /* For IE8 and earlier */
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .imgContainer_2 {
+      text-align: center;
+    }
+
+    .helper {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .navbar {
+        margin-bottom: 0;
+        z-index: -1; /* Sit on top */
+    }
+
+    .image_behind_text {
+      position: relative;
+      width: 100%; /* for IE 6 */
+      text-align: left;
+    }
+
+    .text_before_image {
+      position: absolute;
+      top: 200px;
+      left: 0;
+      width: 60%;
+    }
+
+    .text_before_image_inner {
+      color: white;
+      font: bold 20px/45px Helvetica, Sans-Serif;
+      letter-spacing: 0px;
+      background: rgb(0, 0, 0); /* fallback color */
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+    }
+
+    .spacer {
+       padding:0 5px;
+    }
+
+    .main_truck {
+
+    }
+
+    .main_truck:hover {
+
+    }
+
+    .space_up {
+      margin-top: 8px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 10; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%; /* Could be more or less, depending on screen size */
+        overflow: scroll;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal_full {
+      width: 100%;
+      text-align: center;
+    }
+
+    .navbar-text {
+      font-weight: bold;
+    }
+
+    .modal_image {
+      width: 100%;
+    }
+
+    .steakout_comments {
+      width: 100%;
+      height: 100px;
+      overflow: scroll;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -42,7 +167,7 @@
       </nav>
 
       <div class="image_behind_text">
-        <img id="food_truck_1" class="main_truck" src="./food_truck_1.jpg" />
+        <img id="food_truck_1" class="main_truck" src="http://i.imgur.com/C2aJJEQ.jpg" />
         <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 1<span class='spacer'></span></span></h1>
       </div>
 
@@ -75,7 +200,7 @@
       </nav>
 
       <div class="image_behind_text">
-        <img id="food_truck_2" class="main_truck" src="./food_truck_2.jpg" />
+        <img id="food_truck_2" class="main_truck" src="http://i.imgur.com/cYa6ZL7.jpg" />
         <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 2<span class='spacer'></span></span></h1>
       </div>
 
@@ -108,7 +233,7 @@
       </nav>
 
       <div class="image_behind_text">
-        <img id="food_truck_3" class="main_truck" src="./food_truck_3.jpeg" />
+        <img id="food_truck_3" class="main_truck" src="http://i.imgur.com/R9O4z5w.jpg" />
         <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 3<span class='spacer'></span></span></h1>
       </div>
 
@@ -141,7 +266,7 @@
       </nav>
 
       <div class="image_behind_text">
-        <img id="food_truck_4" class="main_truck" src="./food_truck_4.jpg" />
+        <img id="food_truck_4" class="main_truck" src="http://i.imgur.com/HGaGL1l.jpg" />
         <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 4<span class='spacer'></span></span></h1>
       </div>
 
@@ -171,7 +296,7 @@
       <div class="modal_full">
         <span class="close">x</span>
         <p>Modal for food_truck_1</p>
-        <img class="modal_image" src="./stock_photo_1.jpg"/>
+        <img class="modal_image" src="http://i.imgur.com/UlcZVs3.jpg"/>
         <div class="steakout_comments">
           <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
           <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
@@ -185,7 +310,7 @@
           <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
           <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
           <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-        
+
         </div>
       </div>
     </div>
@@ -196,7 +321,22 @@
       <div class="modal_full">
         <span class="close">x</span>
         <p>Modal for food_truck_2</p>
-        <img class="modal_image" src="./stock_photo_2.jpg"/>
+        <img class="modal_image" src="http://i.imgur.com/AB655WM.jpg"/>
+        <div class="steakout_comments">
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+
+        </div>
       </div>
     </div>
   </div>
@@ -206,7 +346,22 @@
       <div class="modal_full">
         <span class="close">x</span>
         <p>Modal for food_truck_3</p>
-        <img class="modal_image" src="./stock_photo_3.jpg"/>
+        <img class="modal_image" src="http://i.imgur.com/ZQXujNk.jpg"/>
+        <div class="steakout_comments">
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+
+        </div>
       </div>
     </div>
   </div>
@@ -216,7 +371,22 @@
       <div class="modal_full">
         <span class="close">x</span>
         <p>Modal for food_truck_4</p>
-        <img class="modal_image" src="./stock_photo_4.jpg"/>
+        <img class="modal_image" src="http://i.imgur.com/caQHkmj.jpg"/>
+        <div class="steakout_comments">
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
+
+        </div>
       </div>
     </div>
   </div>
@@ -227,6 +397,102 @@
 
 
 
-  <script src="./truck_main.js"></script>
+  <script>
+  var window_height = $( window ).height();
+  var window_divisor = 2.6;
+
+  if ((window_height/window_divisor - 10) > 350) {
+    $(".main_truck").width( window_height/window_divisor - 10 );
+    $(".main_truck").height( window_height/window_divisor - 10 );
+
+    $( window ).bind("resize", function(){
+        // Change the width of the div
+        window_height = $( window ).height();
+        $(".main_truck").width( window_height/window_divisor - 10 );
+        $(".main_truck").height( window_height/window_divisor - 10 );
+    });
+  } else {
+    $(".main_truck").width( 350 );
+    $(".main_truck").height( 350 );
+  }
+
+
+
+  // Get the images that open the modals
+  var food_truck_1 = document.getElementById("food_truck_1");
+  var food_truck_2 = document.getElementById("food_truck_2");
+  var food_truck_3 = document.getElementById("food_truck_3");
+  var food_truck_4 = document.getElementById("food_truck_4");
+
+
+
+
+  // Get the modals
+  var modal_food_truck_1 = document.getElementById('modal_food_truck_1');
+  var modal_food_truck_2 = document.getElementById('modal_food_truck_2');
+  var modal_food_truck_3 = document.getElementById('modal_food_truck_3');
+  var modal_food_truck_4 = document.getElementById('modal_food_truck_4');
+  // Get the <span> element that closes the modal
+  var span_food_truck_1 = document.getElementsByClassName("close")[0];
+  var span_food_truck_2 = document.getElementsByClassName("close")[1];
+  var span_food_truck_3 = document.getElementsByClassName("close")[2];
+  var span_food_truck_4 = document.getElementsByClassName("close")[3];
+
+  // When the user clicks on the image, open the modal
+  food_truck_1.onclick = function() {
+      console.log("food_truck_1 was clicked");
+      modal_food_truck_1.style.display = "block";
+  }
+  food_truck_2.onclick = function() {
+      console.log("food_truck_2 was clicked");
+      modal_food_truck_2.style.display = "block";
+  }
+  food_truck_3.onclick = function() {
+      console.log("food_truck_3 was clicked");
+      modal_food_truck_3.style.display = "block";
+  }
+  food_truck_4.onclick = function() {
+      console.log("food_truck_4 was clicked");
+      modal_food_truck_4.style.display = "block";
+  }
+
+
+  // When the user clicks on <span> (x), close the modal
+  span_food_truck_1.onclick = function(event) {
+    modal_food_truck_1.style.display = "none";
+  }
+  span_food_truck_2.onclick = function(event) {
+    modal_food_truck_2.style.display = "none";
+  }
+  span_food_truck_3.onclick = function(event) {
+    modal_food_truck_3.style.display = "none";
+  }
+  span_food_truck_4.onclick = function(event) {
+    modal_food_truck_4.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal_food_truck_1) {
+          modal_food_truck_1.style.display = "none";
+      } else if (event.target == modal_food_truck_2) {
+          modal_food_truck_2.style.display = "none";
+      } else if (event.target == modal_food_truck_3) {
+          modal_food_truck_3.style.display = "none";
+      } else if (event.target == modal_food_truck_4) {
+          modal_food_truck_4.style.display = "none";
+      }
+  }
+
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) { // escape key maps to keycode `27`
+      modal_food_truck_1.style.display = "none";
+      modal_food_truck_2.style.display = "none";
+      modal_food_truck_3.style.display = "none";
+      modal_food_truck_4.style.display = "none";
+    }
+  });
+
+  </script>
 </body>
 </html>
