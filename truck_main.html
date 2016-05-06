@@ -22,21 +22,44 @@
   <![endif]-->
 
   <style type='text/css'>
+
+    body {
+      background-image: url("https://snap-photos.s3.amazonaws.com/img-thumbs/960w/JZQ1X0X4CZ.jpg");
+      background-color: black;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+
+    html,body { height: 112.5%; margin: 0px; padding: 0px; }
+
     .imgContainer{
+      margin: 10px 10px 0px 10px;
       display: inline-block;
-      margin: 0px 20px 0px 20px;
-      opacity: 0.4;
-      filter: alpha(opacity=40); /* For IE8 and earlier */
+      vertical-align: middle;          /* vertical alignment of the inline element */
     }
 
     .imgContainer:hover {
-      opacity: 1.0;
-      filter: alpha(opacity=100); /* For IE8 and earlier */
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .imgContainer_2 {
-      text-align: center;
+      height: 100%;
+      text-align: center;  /* align the inline(-block) elements horizontally */
+    }
+
+    .vertically_align_content {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:100%;
+      height: 100%;
+      overflow: scroll;
+    }
+
+    .inner_vertical_align {
+
     }
 
     .helper {
@@ -97,18 +120,19 @@
         top: 0;
         width: 100%; /* Full width */
         height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
+        overflow: scroll; /* Enable scroll if needed */
         background-color: rgb(0,0,0); /* Fallback color */
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
 
     /* Modal Content/Box */
     .modal-content {
-        background-color: #fefefe;
+        background-color:	#eeeeee;
         margin: 5% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 90%; /* Could be more or less, depending on screen size */
+        height: 75%;
+        width: 75%; /* Could be more or less, depending on screen size */
         overflow: scroll;
     }
 
@@ -146,145 +170,160 @@
       overflow: scroll;
     }
 
+    .full_width {
+      width: 100%;
+    }
+
+    .align-center {
+      text-align: center;
+    }
+
   </style>
 </head>
 
 <body>
+
+
+
   <div class="imgContainer_2">
-
-    <div class="imgContainer">
-      <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Date/Time</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
+    <div class="vertically_align_content">
+      <div class="inner_vertical_align">
+        <div class="imgContainer">
+          <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Date/Time</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
+                </div>
+              </ul>
             </div>
-          </ul>
-        </div>
-      </nav>
+          </nav>
 
-      <div class="image_behind_text">
-        <img id="food_truck_1" class="main_truck" src="http://i.imgur.com/C2aJJEQ.jpg" />
-        <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 1<span class='spacer'></span></span></h1>
+          <div class="image_behind_text">
+            <img id="food_truck_1" class="main_truck" src="http://i.imgur.com/C2aJJEQ.jpg" />
+            <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 1<span class='spacer'></span></span></h1>
+          </div>
+
+          <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Location</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="imgContainer">
+          <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Date/Time</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
+                </div>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="image_behind_text">
+            <img id="food_truck_2" class="main_truck" src="http://i.imgur.com/cYa6ZL7.jpg" />
+            <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 2<span class='spacer'></span></span></h1>
+          </div>
+
+          <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Location</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="imgContainer">
+          <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Date/Time</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
+                </div>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="image_behind_text">
+            <img id="food_truck_3" class="main_truck" src="http://i.imgur.com/R9O4z5w.jpg" />
+            <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 3<span class='spacer'></span></span></h1>
+          </div>
+
+          <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Location</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="imgContainer">
+          <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Date/Time</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
+                </div>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="image_behind_text">
+            <img id="food_truck_4" class="main_truck" src="http://i.imgur.com/HGaGL1l.jpg" />
+            <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 4<span class='spacer'></span></span></h1>
+          </div>
+
+          <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <p class="navbar-text">Location</p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-header">
+                  <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
-
-      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Location</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
-            </div>
-          </ul>
-        </div>
-      </nav>
     </div>
-
-    <div class="imgContainer">
-      <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Date/Time</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
-            </div>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="image_behind_text">
-        <img id="food_truck_2" class="main_truck" src="http://i.imgur.com/cYa6ZL7.jpg" />
-        <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 2<span class='spacer'></span></span></h1>
-      </div>
-
-      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Location</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
-            </div>
-          </ul>
-        </div>
-      </nav>
-    </div>
-
-    <div class="imgContainer">
-      <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Date/Time</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
-            </div>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="image_behind_text">
-        <img id="food_truck_3" class="main_truck" src="http://i.imgur.com/R9O4z5w.jpg" />
-        <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 3<span class='spacer'></span></span></h1>
-      </div>
-
-      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Location</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
-            </div>
-          </ul>
-        </div>
-      </nav>
-    </div>
-
-    <div class="imgContainer">
-      <nav class="navbar navbar-inverse navbar-static-top space_up" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Date/Time</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">May 3rd 2016, 1:26:07 am</p>
-            </div>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="image_behind_text">
-        <img id="food_truck_4" class="main_truck" src="http://i.imgur.com/HGaGL1l.jpg" />
-        <h1 class="text_before_image"><span class="text_before_image_inner">Truck Number 4<span class='spacer'></span></span></h1>
-      </div>
-
-      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <p class="navbar-text">Location</p>
-          </div>
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-header">
-              <p class="navbar-text">서울특별시 종로구 율곡로 187 6층</p>
-            </div>
-          </ul>
-        </div>
-      </nav>
-    </div>
-
   </div>
+
+
 
 
 
@@ -295,73 +334,163 @@
     <div class="modal-content">
       <div class="modal_full">
         <span class="close">x</span>
-        <p>Modal for food_truck_1</p>
+        <h2>"There is no sincerer love than the love of food."</h2>
         <img class="modal_image" src="http://i.imgur.com/UlcZVs3.jpg"/>
-        <div class="steakout_comments">
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-
-        </div>
+        <div class="container full_width">
+        <h3>Steakout Staff Comments</h3>
+        <table class="table table-hover">
+          <thead style="text-align: center;">
+            <tr>
+              <th class="align-center">Date/Time</th>
+              <th class="align-center">Staff Member</th>
+              <th class="align-center">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   </div>
+
+
 
   <div id="modal_food_truck_2" class="modal">
     <div class="modal-content">
       <div class="modal_full">
         <span class="close">x</span>
-        <p>Modal for food_truck_2</p>
+        <h2>"There is no sincerer love than the love of food."</h2>
         <img class="modal_image" src="http://i.imgur.com/AB655WM.jpg"/>
-        <div class="steakout_comments">
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-
-        </div>
+        <div class="container full_width">
+        <h3>Steakout Staff Comments</h3>
+        <table class="table table-hover">
+          <thead style="text-align: center;">
+            <tr>
+              <th class="align-center">Date/Time</th>
+              <th class="align-center">Staff Member</th>
+              <th class="align-center">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   </div>
+
 
   <div id="modal_food_truck_3" class="modal">
     <div class="modal-content">
       <div class="modal_full">
         <span class="close">x</span>
-        <p>Modal for food_truck_3</p>
+        <h2>"There is no sincerer love than the love of food."</h2>
         <img class="modal_image" src="http://i.imgur.com/ZQXujNk.jpg"/>
-        <div class="steakout_comments">
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-
-        </div>
+        <div class="container full_width">
+        <h3>Steakout Staff Comments</h3>
+        <table class="table table-hover">
+          <thead style="text-align: center;">
+            <tr>
+              <th class="align-center">Date/Time</th>
+              <th class="align-center">Staff Member</th>
+              <th class="align-center">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   </div>
@@ -370,51 +499,105 @@
     <div class="modal-content">
       <div class="modal_full">
         <span class="close">x</span>
-        <p>Modal for food_truck_4</p>
+        <h2>"There is no sincerer love than the love of food."</h2>
         <img class="modal_image" src="http://i.imgur.com/caQHkmj.jpg"/>
-        <div class="steakout_comments">
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-          <p>asldkfj alskdfja lalskdflaskdjfla asldfalsk djfasd</p>
-
-        </div>
+        <div class="container full_width">
+        <h3>Steakout Staff Comments</h3>
+        <table class="table table-hover">
+          <thead style="text-align: center;">
+            <tr>
+              <th class="align-center">Date/Time</th>
+              <th class="align-center">Staff Member</th>
+              <th class="align-center">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+            <tr>
+              <td>13-Dec-2023 02:11:48</td>
+              <td>Ratnam Frank</td>
+              <td>A postscript reaches our wider key.</td>
+            </tr>
+            <tr>
+              <td>20-Jul-1992 04:47:25</td>
+              <td>Gervas Vlado</td>
+              <td>The misuse dines on top of a motor!</td>
+            </tr>
+            <tr>
+              <td>14-Feb-2013 07:42:25</td>
+              <td>Iahmesu Elijah</td>
+              <td>Beside the universe overcomes the fallacious tragedy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       </div>
     </div>
   </div>
 
 
 
-
-
-
-
   <script>
   var window_height = $( window ).height();
-  var window_divisor = 2.6;
+  var window_width = $( window ).width();
+  var window_divisor = 2.1;
 
-  if ((window_height/window_divisor - 10) > 350) {
-    $(".main_truck").width( window_height/window_divisor - 10 );
-    $(".main_truck").height( window_height/window_divisor - 10 );
+  console.log(window_height);
 
-    $( window ).bind("resize", function(){
-        // Change the width of the div
-        window_height = $( window ).height();
-        $(".main_truck").width( window_height/window_divisor - 10 );
-        $(".main_truck").height( window_height/window_divisor - 10 );
-    });
+  if ((window_height/window_divisor - 10) > 300) {
+    $(".main_truck").width( window_height/window_divisor - 5 );
+    $(".main_truck").height( window_height/window_divisor - 5 );
   } else {
-    $(".main_truck").width( 350 );
-    $(".main_truck").height( 350 );
+    $(".main_truck").width( 300 );
+    $(".main_truck").height( 300 );
   }
+
+  if (window_width < 1300) {
+    console.log('smaller');
+    $(".inner_vertical_align").css('marginLeft', '200px');
+    $(".inner_vertical_align").css('marginRight', '200px');
+  } else {
+    console.log('larger');
+    $(".inner_vertical_align").css('marginLeft', '0px');
+    $(".inner_vertical_align").css('marginRight', '0px');
+  }
+
+  $( window ).bind("resize", function(){
+    window_width = $( window ).width();
+    if (window_width < 1300) {
+      console.log('smaller');
+      $(".inner_vertical_align").css('marginLeft', '200px');
+      $(".inner_vertical_align").css('marginRight', '200px');
+    } else {
+      console.log('larger');
+      $(".inner_vertical_align").css('marginLeft', '0px');
+      $(".inner_vertical_align").css('marginRight', '0px');
+    }
+
+    // Change the width of the div
+    window_height = $( window ).height();
+    if ((window_height/window_divisor - 10) > 300) {
+      $(".main_truck").width( window_height/window_divisor - 5 );
+      $(".main_truck").height( window_height/window_divisor - 5 );
+    } else {
+      $(".main_truck").width( 300 );
+      $(".main_truck").height( 300 );
+    }
+  });
 
 
 

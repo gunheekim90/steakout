@@ -158,7 +158,6 @@ app.put('/subscriptions/:id', function(req, res) {
   }, function(error) {
     res.status(400).json(error);
   });
-
 });
 
 
