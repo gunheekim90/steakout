@@ -4,28 +4,34 @@ var Sequelize = require('sequelize');
 var env = process.env.NODE_ENV || 'development';
 var sequelize;
 
+// TEST CODE - DO NOT PUSH TO AWS /////////////////////////////////////
 if (env === 'production') {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgresl',
   });
 } else {
-  sequelize = new Sequelize('steakout','steakout','qortkdgns', {
-    host :'steakout.crumgltvdqqx.ap-northeast-2.rds.amazonaws.com',
-    dialect : 'mysql',
-    port : 3306
+  //if we have db account, shoud we put the account in this line??
+  sequelize = new Sequelize(undefined, undefined, undefined, {
+    'dialect': 'sqlite',
+    'storage': __dirname + '/data/dev-steakout-api.sqlite'
   });
 }
+//////////////////////////////////////////////////////////////////////////
 
-/*
-subscription
-  id email subscribed
 
-review
-  id name phone_number message
 
-notice_board
-  id title message date province city longitude latitude image_address
-*/
+
+// if (env === 'production') {
+//   sequelize = new Sequelize(process.env.DATABASE_URL, {
+//     dialect: 'postgresl',
+//   });
+// } else {
+//   sequelize = new Sequelize('steakout','steakout','qortkdgns', {
+//     host :'steakout.crumgltvdqqx.ap-northeast-2.rds.amazonaws.com',
+//     dialect : 'mysql',
+//     port : 3306
+//   });
+// }
 
 var db = {};
 

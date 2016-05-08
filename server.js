@@ -303,7 +303,7 @@ app.delete('/reviews/:id', function(req, res) {
 
 
 
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(port, function() {
     console.log('server listening on port: ' + port);
   });
