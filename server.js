@@ -6,7 +6,7 @@ var sendgrid = require('sendgrid')('SG.zTrdVVKmT6-iSk4LfU30mA.9jpUfQcn6acJlBSgpB
 var path = require("path");
 
 var db = require('./db.js');
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 
 
 app.set('views', __dirname + '/views');

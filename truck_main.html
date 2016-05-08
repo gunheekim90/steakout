@@ -32,7 +32,7 @@
       background-size: cover;
     }
 
-    html,body { height: 112.5%; margin: 0px; padding: 0px; }
+    html,body { height: 115%; margin: 0px; padding: 0px; }
 
     .imgContainer{
       margin: 10px 10px 0px 10px;
@@ -558,12 +558,12 @@
 
   console.log(window_height);
 
-  if ((window_height/window_divisor - 10) > 300) {
+  if ((window_height/window_divisor - 10) > 330) {
     $(".main_truck").width( window_height/window_divisor - 5 );
     $(".main_truck").height( window_height/window_divisor - 5 );
   } else {
-    $(".main_truck").width( 300 );
-    $(".main_truck").height( 300 );
+    $(".main_truck").width( 330 );
+    $(".main_truck").height( 330 );
   }
 
   if (window_width < 1300) {
@@ -590,12 +590,12 @@
 
     // Change the width of the div
     window_height = $( window ).height();
-    if ((window_height/window_divisor - 10) > 300) {
+    if ((window_height/window_divisor - 10) > 330) {
       $(".main_truck").width( window_height/window_divisor - 5 );
       $(".main_truck").height( window_height/window_divisor - 5 );
     } else {
-      $(".main_truck").width( 300 );
-      $(".main_truck").height( 300 );
+      $(".main_truck").width( 330 );
+      $(".main_truck").height( 330 );
     }
   });
 
