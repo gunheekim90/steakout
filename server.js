@@ -8,10 +8,14 @@ var path = require("path");
 var db = require('./db.js');
 var port = process.env.PORT || 3000;
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.set('views', __dirname + '/views');
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname, 'board.html'));
@@ -27,6 +31,25 @@ app.get('/culinary',function(req,res){
 
 app.get('/trucks',function(req,res){
   res.sendFile(path.join(__dirname, 'truck_main.html'));
+});
+
+app.get('/subscription_success',function(req,res){
+  res.sendFile(path.join(__dirname, 'subscription_success.html'));
+});
+
+app.get('/backoffice', function(req, res) {
+  db.subscription.findAll().then(function(subscriptions) {
+    var subscriptionArray = [];
+    console.log(Array.isArray(subscriptionArray));
+    for (var subscription in subscriptions) {
+      if (subscriptions.hasOwnProperty(subscription)) {
+        subscriptionArray.push(subscriptions[subscription].dataValues);
+      }
+    }
+    console.log(subscriptionArray);
+    console.log(Array.isArray(subscriptionArray));
+    res.render('backoffice.html', {subscriptionArray});
+  });
 });
 
 
@@ -82,7 +105,13 @@ app.get('/subscriptions/:id', function(req, res) {
 });
 
 app.post("/subscriptions/new", function(req, res) {
+
+  console.log("\n\n\n\n");
+  console.log(req.body);
+  console.log("\n\n\n\n");
+
   var body = _.pick(req.body, 'email');
+
   if (!_.isString(body.email) || body.email.trim().length === 0 || !_.contains(body.email, '@')) {
         res.status(400).json({"error": "The request body was not formatted correctly."});
   }
@@ -104,7 +133,7 @@ app.post("/subscriptions/new", function(req, res) {
 
   db.subscription.create(body).then(function(subscription) {
     if (subscription) {
-      res.send(subscription.toJSON());
+      res.redirect('/subscription_success');
     } else {
       res.status(500).send();
     }
@@ -303,7 +332,7 @@ app.delete('/reviews/:id', function(req, res) {
 
 
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(port, function() {
     console.log('server listening on port: ' + port);
   });

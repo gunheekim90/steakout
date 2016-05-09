@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Backoffice</title>
+  <meta name="description" content="Backoffice">
+  <meta name="author" content="Joseph">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style>
+  .centered_wrapper {
+    text-align: center;
+  }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <table class="table" id="subscriptions">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Subscription Date</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="centered_wrapper">
+    <button type="button" class="btn btn-success btn-lg">Show Subscribed</button>
+    <button type="button" class="btn btn-warning btn-lg">Show Unsubscribed</button>
+    <button type="button" class="btn btn-primary btn-lg">Send Email to Subscribed</button>
+  </div>
+  <form>
+    <fieldset class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      <small class="text-muted">We'll never share your email with anyone else.</small>
+    </fieldset>
+    <button type="button" class="btn btn-info btn-lg">Add Subscription</button>
+    <button type="button" class="btn btn-danger btn-lg">Delete Subscription</button>
+  </form>
+
+  <script>
+    var allEmails = <%- JSON.stringify(subscriptionArray) %>;
+    var table = document.getElementById("subscriptions");
+    allEmails.forEach(function(entry, i) {
+      var row = table.insertRow(i+1);
+      var cell_id = row.insertCell(0);
+      var cell_email = row.insertCell(1);
+      var cell_subscribed = row.insertCell(2);
+      var cell_createdAt = row.insertCell(3);
+      var cell_updatedAt = row.insertCell(4);
+      cell_id.innerHTML = entry.id;
+      cell_email.innerHTML = entry.email;
+      cell_subscribed.innerHTML = entry.subscribed;
+      cell_createdAt.innerHTML = entry.createdAt;
+      cell_updatedAt.innerHTML = entry.updatedAt;
+    });
+  </script>
+</body>
+</html>

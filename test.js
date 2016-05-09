@@ -1,4 +1,21 @@
-var phone_number = '010-1234-2342';
-phone_number = phone_number.replace(/[^0-9]/g, '').trim();
+var express = require('express');
+var app = express();
+var path = require("path");
+var bodyParser = require('body-parser');
 
-console.log(phone_number);
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname, 'test.html'));
+});
+
+app.post('/getemail',function(req,res){
+  console.log(req.body);
+  res.send({ status: 'SUCCESS' });
+});
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});

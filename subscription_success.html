@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>subscription success!</title>
+  <meta name="description" content="succes!">
+  <meta name="author" content="joseph choi">
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+  <style>
+    html {
+      background: url("https://snap-photos.s3.amazonaws.com/img-thumbs/960w/PSHYO7Y4K5.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <!-- <script>
+    window.onload = function() {
+      alert("You have successfully subscribed!");
+      window.close();
+    }
+  </script> -->
+
+  <div id="dialog-message" title="Success!">
+    <p>
+      You have been added to the mailing list. Thank you for your interest!
+    </p>
+  </div>
+  <script>
+  $(function() {
+    $( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          window.close();
+        }
+      }
+    }).on('dialogclose', function(event) {
+     window.close();
+    });;
+  });
+  </script>
+</body>
+</html>
