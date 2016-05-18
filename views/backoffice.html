@@ -42,18 +42,36 @@
       </table>
     </div>
   </div>
-  <div class="centered_wrapper">
-    <button type="button" class="btn btn-success btn-lg">Show Subscribed</button>
-    <button type="button" class="btn btn-warning btn-lg">Show Unsubscribed</button>
-    <button type="button" class="btn btn-primary btn-lg">Send Email to Subscribed</button>
-  </div>
-  <form>
+
+  <form action="/backoffice/showsubscribed" method="get">
     <fieldset class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        <button type="submit" class="btn btn-success" id="showSubscribed">Show Subscribed</button>
+        <!-- <button type="button" class="btn btn-warning btn-lg">Show Unsubscribed</button>
+        <button type="button" class="btn btn-primary btn-lg">Send Email to Subscribed</button> -->
     </fieldset>
-    <button type="button" class="btn btn-info btn-lg">Add Subscription</button>
-    <button type="button" class="btn btn-danger btn-lg">Delete Subscription</button>
+  </form>
+  <form action="/backoffice/showunsubscribed" method="get">
+    <fieldset class="form-group">
+        <button type="submit" class="btn btn-info" id="showunsubscribed">Show Unsubscribed</button>
+        <!-- <button type="button" class="btn btn-warning btn-lg">Show Unsubscribed</button>
+        <button type="button" class="btn btn-primary btn-lg">Send Email to Subscribed</button> -->
+    </fieldset>
+  </form>
+
+  <form role="form" action="/test" method="post" id="sendEmailAll" name="sendEmailAll" target="_blank" novalidate>
+    <fieldset class="form-group">
+      <label for="newSubscription">Message</label>
+      <input class="form-control" type="text" name="sendEmail" id="sendEmailAll" /><br/>
+      <button type="submit" class="btn btn-primary" id="sendEmailAll">Send Email to Subscribed</button>
+    </fieldset>
+  </form>
+
+  <form role="form" action="/backoffice/subscription/new" method="post" id="newSubscription" name="newSubscription" target="_blank" novalidate>
+    <fieldset class="form-group">
+      <label for="newSubscription">Email address</label>
+      <input class="form-control" type="text" name="email" id="newSubscription" /><br/>
+      <button type="submit" class="btn btn-primary" id="mysubmit">Add Subscription</button>
+    </fieldset>
   </form>
 
   <script>

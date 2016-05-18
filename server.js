@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// app.use(bodyParser.json());
+
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname, 'board.html'));
 });
@@ -39,6 +41,36 @@ app.get('/subscription_success',function(req,res){
 
 app.get('/backoffice', function(req, res) {
   db.subscription.findAll().then(function(subscriptions) {
+    var subscriptionArray = [];
+    console.log(Array.isArray(subscriptionArray));
+    for (var subscription in subscriptions) {
+      if (subscriptions.hasOwnProperty(subscription)) {
+        subscriptionArray.push(subscriptions[subscription].dataValues);
+      }
+    }
+    console.log(subscriptionArray);
+    console.log(Array.isArray(subscriptionArray));
+    res.render('backoffice.html', {subscriptionArray});
+  });
+});
+
+app.get('/backoffice/showsubscribed', function(req, res) {
+  db.subscription.findAll({where: {subscribed: true}}).then(function(subscriptions) {
+    var subscriptionArray = [];
+    console.log(Array.isArray(subscriptionArray));
+    for (var subscription in subscriptions) {
+      if (subscriptions.hasOwnProperty(subscription)) {
+        subscriptionArray.push(subscriptions[subscription].dataValues);
+      }
+    }
+    console.log(subscriptionArray);
+    console.log(Array.isArray(subscriptionArray));
+    res.render('backoffice.html', {subscriptionArray});
+  });
+});
+
+app.get('/backoffice/showunsubscribed', function(req, res) {
+  db.subscription.findAll({where: {subscribed: false}}).then(function(subscriptions) {
     var subscriptionArray = [];
     console.log(Array.isArray(subscriptionArray));
     for (var subscription in subscriptions) {
@@ -163,15 +195,20 @@ app.delete('/subscriptions/:id', function(req, res) {
 
 app.put('/subscriptions/:id', function(req, res) {
   var subscriptionId = parseInt(req.params.id, 10);
-  body = _.pick(req.body, 'email', 'subscribed');
+  console.log(subscriptionId);
+  console.log(req.body);
+  var body = _.pick(req.body, 'email', 'subscribed');
+  console.log(body);
   var attributes = {};
 
   if (body.hasOwnProperty('email')) {
     attributes.email = body.email;
+    console.log("I was!: " + attributes.email);
   }
 
   if (body.hasOwnProperty('subscribed') && _.isBoolean(body.subscribed)) {
     attributes.subscribed = body.subscribed;
+    console.log("I was triggered!: " + attributes.subscribed);
   }
 
   db.subscription.findById(subscriptionId).then(function(subscription) {
@@ -187,6 +224,81 @@ app.put('/subscriptions/:id', function(req, res) {
   }, function(error) {
     res.status(400).json(error);
   });
+});
+
+app.post('/backoffice/subscription/new', function(req, res) {
+  var body = _.pick(req.body, 'email');
+
+  if (!_.isString(body.email) || body.email.trim().length === 0 || !_.contains(body.email, '@')) {
+        res.status(400).json({"error": "The request body was not formatted correctly."});
+  }
+
+  body.email = body.email.trim().toLowerCase();
+
+  db.subscription.findOrCreate({where: {email: body.email}}).spread(function(subscription, created) {
+    console.log(subscription.get({
+      plain: true
+    }));
+    console.log('was created below?');
+    console.log(created)
+    if (created) {
+      var email     = new sendgrid.Email(
+        {
+          to      : body.email,
+          from    : 'steakout.mailer@gmail.com',
+          subject : 'Node Mailer Test',
+          html    : '<h2>Welcome to the Steakout mailing list!</h2><p>If you would like to unsubscribe, please click the following <a href="https://www.npmjs.com/package/request">link</a></p>'
+        }
+      );
+      sendgrid.send(email, function(err, json) {
+        if (err) { console.error(err); }
+        console.log(json);
+      });
+    }
+
+    if (subscription) {
+      res.redirect('/backoffice');
+    } else {
+      res.status(500).send();
+    }
+
+  }).catch(function(error) {
+    res.status(500).send();
+  });
+});
+
+app.post('/test', function(req, res) {
+  var email     = new sendgrid.Email(
+    {
+      to      : 'steakout.mailer@gmail.com',
+      from    : 'steakout.mailer@gmail.com',
+      subject : 'Node Mailer Test',
+      html    : req.body.sendEmail
+    }
+  );
+  db.subscription.findAll({where: {subscribed: true}}).then(function(subscriptions) {
+    var subscriptionArray = [];
+    console.log(Array.isArray(subscriptionArray));
+    for (var subscription in subscriptions) {
+      if (subscriptions.hasOwnProperty(subscription)) {
+        subscriptionArray.push(subscriptions[subscription].dataValues);
+      }
+    }
+    console.log(subscriptionArray);
+    for (var i = 0; i < subscriptionArray.length; i++) {
+      // console.log(subscriptionArray[i].email);
+      email.addTo(subscriptionArray[i].email);
+    }
+    console.log(Array.isArray(subscriptionArray));
+    sendgrid.send(email, function(err, json) {
+      if (err) { console.error(err); }
+      console.log(json);
+    });
+    console.log('this should execute');
+    res.render('backoffice.html', {subscriptionArray});
+  });
+
+  console.log(req.body.sendEmail);
 });
 
 
@@ -287,50 +399,6 @@ app.delete('/reviews/:id', function(req, res) {
     res.status(500).send();
   });
 });
-
-// app.put('/reviews/:id', function(req, res) {
-//   var reviewId = parseInt(req.params.id, 10);
-//   body = _.pick(req.body, 'name', 'phone_number', 'message');
-//   var attributes = {};
-//
-//   if (body.hasOwnProperty('name') && _.isString(body.subscribed)) {
-//     attributes.email = body.email;
-//   }
-//
-//   if (body.hasOwnProperty('subscribed') && _.isBoolean(body.subscribed)) {
-//     attributes.subscribed = body.subscribed;
-//   }
-//
-//   db.subscription.findById(subscriptionId).then(function(subscription) {
-//     if (subscription) {
-//       return subscription.update(attributes);
-//     } else {
-//       res.status(404).send();
-//     }
-//   }, function() {
-//     res.status(500).send();
-//   }).then(function(subscription) {
-//     res.json(subscription.toJSON());
-//   }, function(error) {
-//     res.status(400).json(error);
-//   });
-//
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 db.sequelize.sync({ force: false }).then(function() {
   app.listen(port, function() {
